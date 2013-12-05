@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Numerology</h1>
+        <p class="lead">A numerology calculator to generate reports</p>
+    </div>
+    <form role="form" ng-submit="submitClientDetails()">
+        
+        <div class="form-group">
+            <label for="fullName">Client's full name</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full name" required autofocus ng-model="clientInfo.fullName">
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-4">
+                
+                <div class="form-group">
+                    <label for="birthDate">Date of birth</label>
+                    <input type="number" min="1" max="31" class="form-control" id="birthDate" name="birthDate" placeholder="e.g. 11" required pattern="\d{1,2}" ng-model="clientInfo.birthDate">
+                </div>
+            </div> 
+            
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="birthMonth">Month of birth</label>
+                    <select class="form-control" name="birthMonth" required ng-model="clientInfo.birthMonth">
+                        <option ng-repeat="month in months" value="{{$index + 1 }}">
+                            {{month}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="birthYear">Year of birth</label>
+                    <input type="number" class="form-control" id="birthYear" name="birthYear" placeholder="e.g. 1980" required ng-model="clientInfo.birthYear" pattern="\d{4}" title="4 digit year of birth">
+                </div>
+            </div>    
+        </div>
+        
+        <button class="btn btn-lg btn-primary center-block" type="submit">Submit</button>
+        
+    </form>
+    
+     <pre>form = {{clientInfo | json}}</pre>
+    
+</div>

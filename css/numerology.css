@@ -1,0 +1,11 @@
+.page-header {
+    text-align: center;
+}
+
+.page-header h1 {
+    font-family:'Henny Penny';
+}
+
+.container {
+    max-width: 555px;
+}
