@@ -1,6 +1,7 @@
 var numerologyApp = angular.module('numerologyApp', [
     'ngRoute',
-    'numerologyControllers'
+    'numerologyControllers',
+    'numerologyServices'
 ]);
 
 numerologyApp.config(['$routeProvider',
