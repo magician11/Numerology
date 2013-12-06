@@ -13,7 +13,7 @@ numerologyControllers.controller('NumerologyClientInfoCtrl', function($scope, $l
     };
     
     function calcLifePathNumber() {
-        return 8;
+        return $scope.clientInfo.birthMonth;
     }
 });
 
