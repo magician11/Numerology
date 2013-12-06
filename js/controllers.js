@@ -23,14 +23,7 @@ numerologyControllers.controller('NumerologyLifepathCtrl',
                                  
                                   function($scope, $routeParams, $http, ClientInfoStore) {
                                     
-                                      /*
-                                      $http.get('/meanings/lifepath/' + $routeParams.lifepathNumber + '.html').success(function(data) {
-                                          $scope.lifepathContent = data;
-                                      });
-                                      */
-                                      
-                                      
                                       $scope.lifepathNumber = $routeParams.lifepathNumber;
-                                      $scope.lifepathURL = '/meanings/lifepath/' + $routeParams.lifepathNumber + '.html';
-                                      $scope.lifepathStuff = "<strong>this is fun</strong>";
+                                      $scope.lifepathURL = '/meanings/lifepath/' + $scope.lifepathNumber + '.html';
+                                      $scope.clientInfo = ClientInfoStore.get();
                                   }]);

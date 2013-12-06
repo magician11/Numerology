@@ -1,5 +1,9 @@
 <div class="container">
-    <div class="jumbotron"><h1>{{testing}}Life path {{lifepathNumber}}</h1></div>
+    <div class="jumbotron">
+        <h2>{{clientInfo.fullName}}</h2>
+        <h3>Born {{clientInfo.birthDate}}/{{clientInfo.birthMonth}}/{{clientInfo.birthYear}}</h3>
+    </div>
     
+    <h3>Life Path {{lifepathNumber}}</h3>
     <div ng-include="lifepathURL"></div>
 </div>
