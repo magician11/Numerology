@@ -14,7 +14,19 @@ numerologyControllers.controller('NumerologyClientInfoCtrl', function($scope, $l
     };
     
     function calcLifePathNumber() {
-        return $scope.clientInfo.birthMonth;
+        var birthDigits = $scope.clientInfo.birthDate + $scope.clientInfo.birthMonth + $scope.clientInfo.birthYear;
+        
+        var lifepathNumber = 0, digitsArray = [];
+        
+        
+        // add all the digits until the sum is <= 9
+        do {
+            digitsArray = birthDigits.split('');
+            lifepathNumber = eval(digitsArray.join('+'));
+            birthDigits = lifepathNumber.toString();
+        } while(lifepathNumber == 0 || lifepathNumber > 9)
+        
+        return lifepathNumber;
     }
 });
 
