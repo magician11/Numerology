@@ -1,7 +1,7 @@
 <div class="container">
     <div class="jumbotron">
         <h2>{{clientInfo.fullName}}</h2>
-        <h3>Born {{clientInfo.birthDate}}/{{clientInfo.birthMonth}}/{{clientInfo.birthYear}}</h3>
+        <h4>Born {{ getDOB() | date:'fullDate' }}</h4>
     </div>
     
     <h3>Life Path {{lifepathNumber}}</h3>

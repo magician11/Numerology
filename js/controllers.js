@@ -38,4 +38,13 @@ numerologyControllers.controller('NumerologyLifepathCtrl',
                                       $scope.lifepathNumber = $routeParams.lifepathNumber;
                                       $scope.lifepathURL = '/meanings/lifepath/' + $scope.lifepathNumber + '.html';
                                       $scope.clientInfo = ClientInfoStore.get();
+                                      
+                                      $scope.getDOB = function() {
+                                          return $scope.clientInfo.birthYear + "-" + twoDigits($scope.clientInfo.birthMonth) + "-" + twoDigits($scope.clientInfo.birthDate);
+                                      }
+                                      
+                                      function twoDigits(dateValue) {
+                                          return (dateValue >= 10)? dateValue : '0' + dateValue;
+                                      }
+                                      
                                   }]);
