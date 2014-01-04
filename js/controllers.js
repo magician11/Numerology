@@ -10,31 +10,33 @@ numerologyControllers.controller('NumerologyClientInfoCtrl', function($scope, $l
     $scope.submitClientDetails = function() {
         
         ClientInfoStore.save($scope.clientInfo);
-        $location.path("/numerologyCalculator/lifepath/" + calcLifePathNumber());
+        $location.path("/numerologyCalculator/lifepath/" + getLifePathNumber());
     };
     
-    function calcLifePathNumber() {
+    function sumDigits (digits) {
+        return digits.toString().split('').map(Number)
+        .reduce(function (a, b) { return a + b }, 0);
+    }
+    
+    function calcLifePathNumber (d) {
+        var d = sumDigits(d).toString();
+        // +value is a trick to coerce a value into a number
+        if(d.length > 1) return +calcLifePathNumber(d);
+        return +d
+    }
+    
+    function getLifePathNumber() {
         var birthDigits = $scope.clientInfo.birthDate + $scope.clientInfo.birthMonth + $scope.clientInfo.birthYear;
         
-        var lifepathNumber = 0, digitsArray = [];
-        
-        
-        // add all the digits until the sum is <= 9
-        do {
-            digitsArray = birthDigits.split('');
-            lifepathNumber = eval(digitsArray.join('+'));
-            birthDigits = lifepathNumber.toString();
-        } while(lifepathNumber == 0 || lifepathNumber > 9)
-        
-        return lifepathNumber;
+        return calcLifePathNumber(birthDigits);
     }
 });
 
 numerologyControllers.controller('NumerologyLifepathCtrl',
                                  ['$scope', '$routeParams', '$http', 'ClientInfoStore', 
-                                 
+                                  
                                   function($scope, $routeParams, $http, ClientInfoStore) {
-                                    
+                                      
                                       $scope.lifepathNumber = $routeParams.lifepathNumber;
                                       $scope.lifepathURL = '/meanings/lifepath/' + $scope.lifepathNumber + '.html';
                                       $scope.clientInfo = ClientInfoStore.get();
