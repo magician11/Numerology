@@ -6,6 +6,9 @@ var numerologyControllers = angular.module('numerologyControllers', []);
 
 numerologyControllers.controller('NumerologyClientInfoCtrl', function($scope, $location, ClientInfoStore) {
     $scope.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $scope.clientInfo = {
+        birthYear: 1980
+    };
     
     $scope.submitClientDetails = function() {
         
