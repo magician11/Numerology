@@ -11,9 +11,9 @@ numerologyApp.config(['$routeProvider',
                             templateUrl: 'partials/numerology-client-details.html',
                             controller: 'NumerologyClientInfoCtrl'
                         }).
-                        when('/numerologyCalculator/lifepath/:lifepathNumber', {
-                            templateUrl: 'partials/numerology-lifepath.html',
-                            controller: 'NumerologyLifepathCtrl'
+                        when('/numerologyCalculator/results', {
+                            templateUrl: 'partials/numerology-results.html',
+                            controller: 'NumerologyResultsCtrl'
                         }).
                         otherwise({
                             redirectTo: '/numerologyCalculator'
