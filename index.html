@@ -37,13 +37,26 @@
             </div>
         </div>
         
-        <!-- Angular JS from Google -->
+        <!-- external JS libraries -->
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>
+        <script src="lib/flowtype.js"></script>
         
         <!-- my custom JS libraries -->
         <script src="js/controllers.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
+        
+        <script>
+            $('body').flowtype({
+                minimum   : 500,
+                maximum   : 1200,
+                minFont   : 12,
+                maxFont   : 40,
+                fontRatio : 55,
+                lineRatio : 1.45
+            });
+        </script>
     </body>
 </html>
