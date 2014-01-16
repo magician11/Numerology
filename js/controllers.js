@@ -56,12 +56,12 @@ numerologyControllers.controller('NumerologyResultsCtrl',
                                           .reduce(function (a, b) { return a + b }, 0);
                                       }
                                       
-                                      /********* Expression number calculations *********/
+                                      /********* Destiny number calculations *********/
                                       
-                                      $scope.expressionNumber = getExpressionNumber();
-                                      $scope.expressionURL = '/meanings/expression/' + $scope.expressionNumber + '.html';
+                                      $scope.destinyNumber = getDestinyNumber();
+                                      $scope.destinyURL = '/meanings/destiny/' + $scope.destinyNumber + '.html';
                                       
-                                      function getExpressionNumber() {
+                                      function getDestinyNumber() {
                                           
                                           return 1;
                                       }
