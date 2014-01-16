@@ -4,19 +4,21 @@
         <h4>Born {{ getDOB() | date:'fullDate' }}</h4>
     </div>
     
-    <h3>Life Path {{lifepathNumber}}</h3>
-    
-    <div class="alert alert-info alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <span class="glyphicon glyphicon-info-sign"></span> This number represents who you are at birth and the native traits that you will carry with you through life. The most important number that will be discussed here is your Life Path number. The Life Path describes the nature of this journey through life.
-    </div>
-    <div ng-include="lifepathURL"></div>
-    
-    <h3>Destiny/Expression Number {{expressionNumber}}</h3>
-    <div class="alert alert-info alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <span class="glyphicon glyphicon-info-sign"></span> This name, the complete birth name, symbolizes the opportunities you have at your disposal. This is sometimes referred to as your potential or destiny. Living up to attributes of this number may not be easy, but it is your goal in the here and now.  It is your life's purpose, spiritual mission, and your field of opportunity.  Unlike the Life Path number which reads as you are, the Destiny number more correctly reads as you MUST or what you can aspire to become.
-    </div>
-    <div ng-include="expressionURL"></div>
+    <accordion close-others="true">
+        
+        <accordion-group heading="Life Path {{lifepathNumber}}" is-open="false">
+            <div class="alert alert-info">
+                This number represents who you are at birth and the native traits that you will carry with you through life. The most important number that will be discussed here is your Life Path number. The Life Path describes the nature of this journey through life.
+            </div>
+            <div ng-include="lifepathURL"></div>
+        </accordion-group>
+        
+        <accordion-group heading="Destiny/Expression Number {{expressionNumber}}" is-open="false">
+            <div class="alert alert-info">This name, the complete birth name, symbolizes the opportunities you have at your disposal. This is sometimes referred to as your potential or destiny. Living up to attributes of this number may not be easy, but it is your goal in the here and now.  It is your life's purpose, spiritual mission, and your field of opportunity.  Unlike the Life Path number which reads as you are, the Destiny number more correctly reads as you MUST or what you can aspire to become.
+            </div>
+            <div ng-include="expressionURL"></div>
+        </accordion-group>
+        
+    </accordion>
     
 </div>
