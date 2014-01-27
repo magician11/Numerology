@@ -34,6 +34,17 @@ numerologyControllers.controller('NumerologyResultsCtrl',
                                           return (dateValue >= 10)? dateValue : '0' + dateValue;
                                       }
                                       
+                                      function calcSingleNumber (d) {
+                                          var d = sumDigits(d).toString();
+                                          if(d.length > 1) return +calcSingleNumber(d);
+                                          return +d;
+                                      }
+                                      
+                                      function sumDigits (digits) {
+                                          return digits.toString().split('').map(Number)
+                                          .reduce(function (a, b) { return a + b }, 0);
+                                      }
+                                      
                                       /********* Life Path calculations *********/
                                       
                                       $scope.lifepathNumber = getLifePathNumber();
@@ -42,18 +53,7 @@ numerologyControllers.controller('NumerologyResultsCtrl',
                                       function getLifePathNumber() {
                                           var birthDigits = $scope.clientInfo.birthDate + $scope.clientInfo.birthMonth + $scope.clientInfo.birthYear;
                                           
-                                          return calcLifePathNumber(birthDigits);
-                                      }
-                                      
-                                      function calcLifePathNumber (d) {
-                                          var d = sumDigits(d).toString();
-                                          if(d.length > 1) return +calcLifePathNumber(d);
-                                          return +d
-                                      }
-                                      
-                                      function sumDigits (digits) {
-                                          return digits.toString().split('').map(Number)
-                                          .reduce(function (a, b) { return a + b }, 0);
+                                          return calcSingleNumber(birthDigits);
                                       }
                                       
                                       /********* Destiny number calculations *********/
@@ -61,9 +61,32 @@ numerologyControllers.controller('NumerologyResultsCtrl',
                                       $scope.destinyNumber = getDestinyNumber();
                                       $scope.destinyURL = '/meanings/destiny/' + $scope.destinyNumber + '.html';
                                       
+                                      /* given a character, find what it's associated number value is */
+                                      function getDestinyValue(c) {
+                                          
+                                          var destinyStructure = ["AJS", "BKT", "CLU", "DMV", "ENW", "FOX", "GPY", "HQZ", "IR"];
+                                          
+                                          c = c.toUpperCase();
+                                          
+                                          for (var i = 0; i<destinyStructure.length; i++) {
+                                              if (destinyStructure[i].indexOf(c) != -1) {
+                                                  return i+1;
+                                              }
+                                          }
+                                          
+                                          return 0; // ignores non alphabetical characters
+                                      }
+                                      
+                                      /* go through all the letters in the name to calculate destiny number */
                                       function getDestinyNumber() {
                                           
-                                          return 1;
+                                          var destinyNumber = 0;
+                                          
+                                          for(var i = 0; i < $scope.clientInfo.fullName.length; i++) {
+                                              destinyNumber += getDestinyValue($scope.clientInfo.fullName.charAt(i));
+                                          }
+                                          
+                                          return calcSingleNumber(destinyNumber);
                                       }
                                       
                                   }]);

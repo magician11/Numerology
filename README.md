@@ -1,4 +1,4 @@
 Numerology
 ==========
 
-A numerology calculator to generate reports
+A numerology report generator.
